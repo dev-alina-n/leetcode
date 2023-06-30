@@ -1,16 +1,14 @@
-/**
- * You are given a sorted unique integer array nums.
- *
- * A range [a,b] is the set of all integers from a to b (inclusive).
- *
- * Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
- *
- * Each range [a,b] in the list should be output as:
- *
- * "a->b" if a != b
- * "a" if a == b
- */
+# summary-ranges.md
 
++ [summary-ranges](#summary-ranges)
+
+## summary-ranges
+
+https://leetcode.com/problems/summary-ranges/
+
+<details><summary>Test Cases</summary><blockquote>
+
+``` javascript
     // []
     // []
 
@@ -22,7 +20,11 @@
 
     // [-1]
     // ["-1"]
+```
 
+</blockquote></details>
+
+``` javascript
 const summaryRanges = function(nums) {
         let begin = nums[0]; //начало диапазона
         const resArr = [];
@@ -41,7 +43,4 @@ const summaryRanges = function(nums) {
 
         return resArr;
 };
-
-const example = [1, 1, 7, 7];
-console.log(summaryRanges(example));
-
+```
