@@ -41,4 +41,21 @@ const moveZeroes = function(nums) {
 
         return nums;
     };
+    
+    const moveZeroesV2 = function(nums) {
+    let counter = 0; // counter нужен для запоминания индекса нулевого числа
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== 0) {  // если текущий элемент итерации !== 0
+            const temp = nums[counter];
+            // меняем местами 0 и следующее после него число неравное нулю
+            nums[counter] = nums[i];
+            nums[i] = temp;
+
+            counter++; // переставляем counter на следующий индекс
+        }
+    }
+
+    return nums;
+};
 ```
