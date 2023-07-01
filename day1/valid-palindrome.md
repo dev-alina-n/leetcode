@@ -46,8 +46,11 @@ const isPalindrome = function(s) {
 
         return true;
     };
-    
-    
+```
+
+---
+
+``` javascript
     const isPalindromeV2 = function(s) {
     const cleanStr = s.toLowerCase().split('').reduce((acc, el) => { // делаем нижний регистр и превращаем строку в массив
         if ((el.charCodeAt(0) > 96 && el.charCodeAt(0) < 123) || (47 < el.charCodeAt(0) && el.charCodeAt(0) < 58)) { //оставляем в строке только буквы и числа

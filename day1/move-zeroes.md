@@ -41,7 +41,12 @@ const moveZeroes = function(nums) {
 
         return nums;
     };
-    
+};
+```
+
+---
+
+``` javascript
     const moveZeroesV2 = function(nums) {
     let counter = 0; // counter нужен для запоминания индекса нулевого числа
 
