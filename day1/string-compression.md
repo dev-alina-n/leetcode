@@ -26,33 +26,34 @@ https://leetcode.com/problems/string-compression/
 
 ``` javascript
 const compress = (chars) => {
-    let s = "";
-    let counter = 1;
+    let s = ""; // строка с результатом
+    let counter = 1; // подсчет количества встретившихся символов
 
     for (let i = 0; i < chars.length; i++) {
-        if (chars[i] === chars[i+1]) {
+        if (chars[i] === chars[i+1]) { // если символы одни и те же увеличиваем счетчик
             counter++;
-        } else {
-            if (counter === 1) {
+        } else { // если диапазон повторяющихся символов подошел к концу
+            if (counter === 1) { // если символ встретился только 1 раз, то в строку-результат добавляем только символ без цифры
                 s += chars[i];
-            } else if (counter >= 10) {
-                const separatelyCounter = counter.toString().split('');
-                s += chars[i];
+            } else if (counter >= 10) { // если символ встретился 10 и больше раз
+                const separatelyCounter = counter.toString().split(''); // число счетчика превращаем в отдельные цифры  ("12" -> ["1", "2"])
+                s += chars[i];  // добавляем в строку-результат символ
 
                 for (let j = 0; j < separatelyCounter.length; j++){
-                 s += separatelyCounter[j];
+                 s += separatelyCounter[j]; // добавляем в строку-результат наши отдельные цифры по порядку
                 }
             } else {
-                s += chars[i] + counter.toString();
+                s += chars[i] + counter.toString(); // если символ встретился > 1 и < 10 раз, то добавляем в результирующую строку этот символ и счетчик
             }
-            counter = 1;
+
+            counter = 1;  // возвращаем счетчик к изначальному значению, чтобы считать следующий диапазон
         }
-        
+
         for (let ind = 0; ind < s.length; ind++) {
-            chars[ind] = s[ind];
+            chars[ind] = s[ind]; // модифицируем входящий массив так, чтобы его первые элементы были равны элементам нашей результирующей строки
         }
     }
-    
+
     return s.length;
 }
 ```
