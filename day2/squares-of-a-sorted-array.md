@@ -9,7 +9,7 @@ https://leetcode.com/problems/squares-of-a-sorted-array
 <details><summary>Test Cases</summary><blockquote>
 
 ``` javascript
-    // [0, 6, 2]
+    // [0, 2, 6]
     // [0, 4, 36]
 
     // []
@@ -23,7 +23,23 @@ https://leetcode.com/problems/squares-of-a-sorted-array
 
 ``` javascript
 const sortedSquares = function(nums) {
-        // возводим каждый элемент в квадрат с помощью метода map и сортируем получившийся массив с помощью sort
-        return nums.map(el => el**2).sort((a,b) => a - b);
+        let resArr = new Array(nums.length); // создаем новый массив с той же длиной что и у входящего массива nums
+        let start = 0; // указатель на начало массива
+        let end = resArr.length - 1; // указатель на конец массива
+
+        for (let i = end; i >= 0; i--) { // двигаемся по resArr массиву с конца
+            const squaredStart = nums[start] ** 2;  // возводим в квадрат элемент в начале массива nums
+            const squaredEnd = nums[end] ** 2; // возводим в квадрат элемент в конце массива nums
+
+            if (squaredStart > squaredEnd) { // если элемент в квадрате из начала массива больше чем элемент в квадрате с конца массива
+                resArr[i] = squaredStart; // то записываем значение в resArr массив начиная с конца
+                start++; // сдвигаем указатель правее
+            } else { // если элемент в квадрате из конца массива больше чем элемент в квадрате из начала массива
+                resArr[i] = squaredEnd;
+                end--; // сдвигаем указатель левее
+            }
+        }
+
+        return resArr;
     };
 ```
