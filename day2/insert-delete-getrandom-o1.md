@@ -47,14 +47,14 @@ RandomizedSet.prototype.remove = function(val) {
 };
 
 RandomizedSet.prototype.getRandom = function() {
-    const randomIndex = (Math.floor(Math.random() * this.map.size)) + 1;
+    const randomIndex = (Math.floor(Math.random() * this.map.size)) + 1; // прибавляю 1 чтобы начинать не с 0
     let counter = 1;
 
     for (const [key, value] of this.map) {
-        if (counter === randomIndex) {
-            return key;
+        if (counter === randomIndex) { // counter равен рандомному числу ?
+            return key; // тогда возвращаем текущий ключ
         } else {
-            counter++;
+            counter++; // в ином случае увеличиваем counter на 1
         }
     }
 };
