@@ -33,7 +33,7 @@ const subarraySum = function(nums, k) {
             if (map[sum - k]) { // если sum - k существует в map
                 count += map[sum - k]; // увеличиваем счетчик на map[sum - k]
             }
-            // добавляем текущую sum в map (если текущей sum не существует в map то инициализируем как 1)
+            // увеличиваем текущую sum в map на 1 (если текущей sum не существует в map то инициализируем как 1)
             map[sum] = (map[sum] ? map[sum] + 1 : 1);
         }
 
