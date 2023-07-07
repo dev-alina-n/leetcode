@@ -6,6 +6,16 @@
 
 https://leetcode.com/problems/design-an-atm-machine
 
+<details><summary>Test Cases</summary><blockquote>
+
+``` javascript
+const obj = new ATM();
+obj.deposit([2, 5, 10, 2, 2]);
+const param_2 = obj.withdraw(1000);
+```
+
+</blockquote></details>
+
 ``` javascript
 const ATM = function() {
     this.bankNotesAmounts = new Array(5).fill(0); // [0,0,0,0,0]
