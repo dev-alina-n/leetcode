@@ -34,22 +34,25 @@ https://leetcode.com/problems/valid-parentheses
 </blockquote></details>
 
 ``` javascript
-const isValid = function(s) {
-    if (!s.length || s.length % 2 !== 0) return false; // если строка пустая или состоит из нечетного количества элементов
-    const bracketsArr = []; // массив для хранения закрывающих скобок
+const isValid = function(str) {
+    const map = {
+        '}' : '{',
+        ']': '[',
+        ')': '(',
+    };
+    const bracketsArr = [];
 
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === '('){
-            bracketsArr.push(')');
-        } else if (s[i] === '{') {
-            bracketsArr.push('}');
-        } else if (s[i] === '[') {
-            bracketsArr.push(']');
-        } else if (s[i] !== bracketsArr.pop()) { // если мы удаляем последнюю скобку в массиве и она не равна текущему элементу итерации то вся входящая строка не валидна
-            return false;
+    for (let i = 0; i < str.length; i++) {
+        if (map[str[i]]) { // если текущий элемент - закрывающая скобка
+            let top = bracketsArr.length === 0 ? "#" : bracketsArr.pop();
+            if (map[str[i]] !== top) {
+                return false;
+            }
+        } else { // если текущий элемент - открывающая скобка
+            bracketsArr.push(str[i]); 
         }
     }
-
-    return !bracketsArr.length; // если bracketsArr - пустой, значит входящая строка была валидной тк каждая скобка имела закрывающую пару
+    
+    return bracketsArr.length === 0;
 };
 ```
