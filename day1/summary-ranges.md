@@ -25,22 +25,24 @@ https://leetcode.com/problems/summary-ranges/
 </blockquote></details>
 
 ``` javascript
-const summaryRanges = function(nums) {
-        let begin = nums[0]; //начало диапазона
-        const resArr = [];
+const summaryRanges = (nums) => {
+    const resArr = [];
+    let i = 0, j = 0;
 
-        for (let i = 0; i < nums.length; i++) {
-            if (nums[i + 1] - nums[i] !== 1) { // проверяем что элементы идут с шагом 1
-                if (nums[i] === begin) { // проверяем что это диапазон из одного числа
-                    resArr.push(String(nums[i]));
-                } else {
-                    resArr.push(`${begin}->${nums[i]}`); // если начало и конец - разные числа, то это диапазон и мы его пушим
-                }
-
-                begin = nums[i + 1]; // переставляем begin на начало нового диапазона
+    while (j < nums.length) {
+        if (nums[j] + 1 === nums[j + 1]) { // если элементы идут с шагом 1
+            j++; // сдвигаем j дальше
+        } else {
+            if (i === j) { // если число всего одно в диапазоне
+                resArr.push(`${nums[i]}`);
+            } else { // если начало и конец - разные числа, то это диапазон и мы его пушим
+                resArr.push(`${nums[i]}->${nums[j]}`);
             }
-        }
 
-        return resArr;
-};
+            i = ++j; // передвигаем i дальше
+        }
+    }
+
+    return resArr;
+}
 ```
